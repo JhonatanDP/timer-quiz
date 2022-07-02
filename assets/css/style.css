@@ -23,6 +23,10 @@ html {
     padding: 10px;
 }
 
+.main .score-timer .high-score {
+    padding: inherit;
+}
+
 .main .score-timer .timer {
     padding-right: 40px;
 }
@@ -58,4 +62,9 @@ html {
     padding: 10px 20px;
     font-size: 16px;
     border-radius: 10px;
+}
+
+.main .quiz .btn button:hover {
+    background-color: purple;
+    cursor: pointer;
 }

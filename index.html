@@ -13,24 +13,26 @@
           <section class="high-score">
             <a href="local-storage" id="local-storage">View high scores</a>
           </section>   
-          <section class="timer">
-            <p>Timer: <span class="time"></span></p>
+          <section class="timer" id="time-out">
+            <p>Timer: <span id="time"></span></p>
           </section>
         </header>
-        <section class="quiz">
-            <section class="question">
+        <section class="quiz" >
+            <section class="question" id="question-change">
                 <h1>Coding Quiz Challenge</h1>
             </section>
-            <section class="multi-choice">
-                <p>Try to answer the following code-related questions within the time limit.<br>
+            <div class="multi-choice" id="ol-list">
+                <p id="list">Try to answer the following code-related questions within the time limit.<br>
                 Keep in mind that incorrect answers will penalize your score/time <br>
                 by ten seconds!</p>
-            </section>
+                </div>
             <section class="btn">
               <p>
-                <button onclick="start-quiz()">Start Quiz</button>
+                <button id="summit">Start Quiz</button>
               </p>   
             </section>
+            <section class="answer" id="result"></section>
+
         </section>
     </section>
     <script src="./assets/js/script.js"></script>
