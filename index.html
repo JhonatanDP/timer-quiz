@@ -1,39 +1,56 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Quiz</title>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
-  <body>
-    <section class="main">
-        <header class="score-timer">
-          <section class="high-score">
-            <a href="local-storage" id="local-storage">View high scores</a>
-          </section>   
-          <section class="timer" id="time-out">
-            <p>Timer: <span id="time"></span></p>
-          </section>
-        </header>
-        <section class="quiz" >
-          <section class="question-format">
-            <section class="question" id="question-change">
-                <h1>Coding Quiz Challenge</h1>
-            </section>
-            <div class="multi-choice" id="ul-list">
-                <p id="list">Try to answer the following code-related questions within the time limit.<br>
-                Keep in mind that incorrect answers will penalize your score/time <br>
-                by ten seconds!</p>
+<!DOCTYPE html> 
+<html lang="en-us"> 
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+      <title>Timer Quiz</title>
+      <link rel="stylesheet" href="./assets/css/style.css" />
+    </head> 
+    <body>
+    <header>   
+        <nav class="score-timer">
+                <a class="score" id = "scorelink" >High Scores</a>
+                <span class="ml-auto" id="timer"></span>
+        </nav>
+    </header>
+    <main>    
+        <br>
+        <br>
+        <section class="container">
+            <div class="question-container"> 
+                <div class="in-content">
+                    <h1 class="question" id="question-change">Coding Quiz Challenge</h1>
+                    <hr class="division-line">                  
+                    <section class="multi-answer">        
+                        <div class="left-side">
+                        </div>
+                        <div class="right-side">                           
+                            <section id="principal-contect">                             
+                                <h5 class=title>
+                                  Try to answer the following code-related questions within the time limit.
+                                  Keep in mind that incorrect answers will penalize your score/time
+                                  by ten seconds!  
+                                </h5>                              
+                                <div class="startButton">
+                                    <button type="submit" id="startquiz" class="btn">Start Quiz</button>
+                                </div>
+                            </section>
+                            <div id = "quizquestion"></div>
+                            <div id = "userscore"></div>
+                            <div id = "userhighscores"> </div>                       
+                        </div>
+                    </section>                                     
+                    <section id="userselection">
+                         <hr class="-division-line">
+                    </section>    
                 </div>
-            <section id="btn">
-                <button id="summit">Start Quiz</button>
-            </section>
-            <section class="answer" id="result"></section>
+            </div>                     
         </section>
-        </section>
-    </section>
+        <br>
+    </main>
     <script src="./assets/js/script.js"></script>
-  </body>
+    </body>
+    
 </html>

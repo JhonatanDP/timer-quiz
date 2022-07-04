@@ -53,9 +53,20 @@ var userQuestions = [
 
 var userScore = 0;
 var userWrongAnswer;
-var userWrongCounter = 0;
-var userCorrectAnswer;
-var timeLeft = 5;
+var questionIndex = 0;
+var userCorrectAnswer = 0 
+var timeLeft = 75;
+
+var timer = document.querySelector("#timer");
+var scoreLink = document.querySelector("#scorelink");
+var principalContent = document.querySelector("#principal-content");
+var questionSwitch = document.getElementById("#question-change");
+var quizQuestion = document.querySelector("#quizquestion");
+var userSelection = document.querySelector("#userselection");
+var userScore = document.querySelector("#userscore");
+var userHighScore = document.querySelector("#userhighscores");
+var score = document.getElementById("#userhighscores");
+
 
 //Counter function
 var startCounter = function() {
@@ -64,6 +75,8 @@ var Counter = setInterval(function () {
     if (timeLeft >= 0) {
       document.getElementById("time").innerHTML = timeLeft;
         timeLeft--;
+
+
         }
     else {
         clearInterval(timeInterval);
@@ -73,16 +86,7 @@ var Counter = setInterval(function () {
 };
 //End counter Function
 
-var questionList = document.getElementById("ul-list");
-var startButton = document.getElementById("btn");
-var listEl = document.createElement("ul");
-var questionSwitch = document.getElementById("question-change");
-var listPosted = document.getElementById("list");
-var deleteStartButton = document.getElementById("summit");
-var a = 0;
-var activeQuestion;
-
-var buildQuestion = function (){
+var buildQuestion = function(){
 
 questionList.removeChild(listPosted);
 startButton.removeChild(deleteStartButton);
@@ -114,120 +118,33 @@ var showAnswers = function(){
     listEl.appendChild(userSelection);
     }
     questionList.appendChild(listEl);
+    buttonPressed();
 };
+var buttonPressed = function(){
 
-var checkAnswer = function (){
     var buttonEl0 = document.getElementById("0");
     var buttonEl1 = document.getElementById("1");
     var buttonEl2 = document.getElementById("2");
     var buttonEl3 = document.getElementById("3");
 
     buttonEl0.addEventListener("click", function(){
-        
+    pressedButton = 0;
+        });
+    buttonEl1.addEventListener("click", function(){
+    pressedButton = 1;
+        });
+    buttonEl2.addEventListener("click", function(){
+    pressedButton = 2;
+        });    
+    buttonEl3.addEventListener("click", function(){
+    pressedButton = 3;
+        });
+};
+    
 
-    });
-
-
-
+var checkAnswer = function(){
 
 };
 
-    
-    
-//     for (var i = 0; i < userQuestions.length-1; i++) {
-//         var userSelection = document.createElement('li');
-//         var answerButton = document.createElement("button");
-//         userSelection.innerHTML = userQuestions[i].answers[i];
-//         startButton.innerHTML = userQuestions[i].answers[i];
-//         userSelection.setAttribute('style','display: block;');
-//         userSelection.appendChild(answerButton);
-//         listEl.appendChild(userSelection);
-//      }
-// questionList.appendChild(listEl);
-
-    
-
-
-
-
-
-
-
-
-
-
-// var questionList = document.getElementById("ol-list");
-// var listPosted = document.getElementById("list");
-// var buttonAnswers = document.createElement("button");
-
-
-
-// buttonAnswers.innerHTML = "TEST" ;
-// li1.appendChild(buttonAnswers);
-// listEl.appendChild(li1);
-// listEl.appendChild(li2);
-// li1.setAttribute("style", "align-items: left; list-style: none;");
-// document.getElementById("question-change").innerHTML = (userQuestions[0].question) ;
-
-
-
-
-// for (var i = 0; i < userQuestions.length; i++){
-//     console.log(userQuestions[i].question);
-// var questionChanged = document.getElementById("question-change");
-
-// }
-
-// };
-
-// for (var i = 0; i < userQuestions.length; i++){
-// questionList.removeChild(listPosted);
-// questionList.appendChild(listEl);
-// listEl.appendChild(li1);
-// listEl.appendChild(li2);
-// }
-    
-// };
-
-
-
-document.getElementById("summit").addEventListener("click", startCounter);
-document.getElementById("summit").addEventListener("click", buildQuestion);
-
-
-// var body = document.body;
-// var h1El = document.createElement("h1");
-// var infoEl = document.createElement("div");
-// var imgEl = document.createElement("img");
-// var kittenEl = document.createElement("div");
-// var nameEl = document.createElement("div");
-// var favoriteEl = document.createElement("div");
-// // Create ordered list element
-// var listEl = document.createElement("ol");
-// // Create ordered list items
-// var li1 = document.createElement("li");
-// var li2 = document.createElement("li");
-// var li3 = document.createElement("li");
-// var li4 = document.createElement("li");
-
-// h1El.textContent = "Welcome to my page";
-// kittenEl.textContent = "This is my kitten 🐱.";
-// nameEl.textContent = "His name is Jax.";
-// favoriteEl.textContent = "My favorite foods are:";
-
-// body.appendChild(h1El);
-// body.appendChild(infoEl);
-// infoEl.appendChild(imgEl);
-// infoEl.appendChild(kittenEl);
-// infoEl.appendChild(nameEl);
-// body.appendChild(favoriteEl);
-// favoriteEl.appendChild(listEl);
-// // Append ordered list 
-// favoriteEl.appendChild(listEl);
-
-// h1El.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-// infoEl.setAttribute("style", "margin:auto; width:50%; text-align:center;");
-// imgEl.setAttribute("src", "http://placekitten.com/200/300");
-// nameEl.setAttribute("style", "font-size:25px; text-align:center;");
-// kittenEl.setAttribute("style", "font-size:25px; text-align:center;");
-// favoriteEl.setAttribute("style", "font-size:20px;");
+// document.getElementById("summit").addEventListener("click", startCounter);
+// document.getElementById("summit").addEventListener("click", buildQuestion);
