@@ -51,7 +51,6 @@ var userQuestions = [
     }  
 ];
 
-var userScore = 0;
 var userWrongAnswer;
 var questionIndex = 0;
 var userCorrectAnswer = 0 
@@ -107,7 +106,7 @@ function startTimer(){
             
             userSelection.style.display = "none";
             quizQuestion.style.display = "none";
-            viewResult();
+            showResult();
             clearInterval(timeInterval);
             timer.textContent = "";
         }
@@ -172,6 +171,72 @@ quizQuestion.addEventListener("click",function(event){
 
 });
 
+function showResult() {
+    questionSwitch.innerHTML = "Challenge Completed!";
+    questionSwitch.style.display= "block";
 
+    var show = document.createElement("p");
+    show.textContent = "You score is : "+ userCorrectAnswer;
+    userScore.appendChild(show);
+
+    var form = document.createElement("form");
+    var label = document.createElement("label");
+    label.textContent = "Enter you name : ";
+
+    var textInput = document.createElement("input");
+    textInput.setAttribute("id","nameInput");
+    textInput.setAttribute("class","textinput");
+
+    var summitScore = document.createElement("button");
+    summitScore.setAttribute("class", "btn");
+    summitScore.textContent = "Summit";
+
+    form.appendChild(label);
+    form.appendChild(textInput);
+    form.appendChild(summitScore);
+
+    userScore.appendChild(form);
+
+    summitScore.addEventListener("click",saveScores);
+}
+
+function saveScores(Event){
+
+    event.preventDefault();
+    var userName = document.querySelector("#nameInput").ariaValueMax.trim();
+
+    if (userName === null || userName === ''){
+        alert("Please enter your name");
+        return;
+    }
+
+    var user = {
+        name: userName,
+        score: correct
+    }
+
+    console.log(user);
+
+    previousScores = JSON.parse(localStorage.getItem("previousScore"));
+
+    if(previousScores){
+        previousScores.push(user);
+    }
+    else {
+        previousScores = [user];
+    }
+
+    localStorage.setItem("previousScores",JSON.stringify(previousScores));
+
+    showScores();
+}
+
+function showScores(){
+
+    
+
+
+
+}
 
 startButton.addEventListener("click",startChallenge);
