@@ -233,7 +233,10 @@ function saveScores(Event){
 
 function showScores(){
 
-    
+    questionSwitch.innerHTML = "userhighscores";
+    questionSwitch.setAttribute("class","userhighdcores");
+
+
 
 
 
