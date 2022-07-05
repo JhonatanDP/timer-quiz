@@ -20,7 +20,11 @@ body {
     color:#212529;
     text-align: left;
 }
+.score-timer .score:hover {
+    color: darkmagenta;
 
+
+}
 .score-timer {
     position: relative;
     display: flex;
@@ -157,6 +161,12 @@ hr {
     text-align: left;
 }
 
+.btnnn {
+
+    margin-left: 30px;
+    margin-top: 20px
+}
+
 .textinput {
     margin-left: 1rem;
     margin-right: 1 rem;
@@ -182,10 +192,32 @@ hr {
 
 .userhighscores {
     text-align: center;
+    color:#0f5090;
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    margin-top: 0;
+
 }
 
 .tableheading {
-    background-color: darkblue;
+    background-color:cadetblue;
+}
+
+#table {
+    text-align: center;
+    border-collapse: collapse;
+    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    width: 100%;
+}
+
+#table tbody {
+    text-align: center;
+    border-collapse: collapse;
 }
 
 

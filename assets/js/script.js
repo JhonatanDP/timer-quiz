@@ -70,7 +70,7 @@ var quizQuestion = document.querySelector("#quizquestion");
 var userSelection = document.querySelector("#userselection");
 var userScore = document.querySelector("#userscore");
 var userHighScore = document.querySelector("#userhighscores");
-var score = document.getElementById("#userhighscores");
+var score = document.getElementById("scorelink");
 var startButton = document.getElementById("startquiz");
 
 
@@ -187,7 +187,7 @@ function showResult() {
     textInput.setAttribute("class","textinput");
 
     var summitScore = document.createElement("button");
-    summitScore.setAttribute("class", "btn");
+    summitScore.setAttribute("class", "btn textinput");
     summitScore.textContent = "Summit";
 
     form.appendChild(label);
@@ -199,10 +199,13 @@ function showResult() {
     summitScore.addEventListener("click",saveScores);
 }
 
-function saveScores(Event){
+function saveScores(event){
 
+    
     event.preventDefault();
-    var userName = document.querySelector("#nameInput").ariaValueMax.trim();
+
+    var userName = document.querySelector("#nameInput").value.trim();
+    console.log(userName);
 
     if (userName === null || userName === ''){
         alert("Please enter your name");
@@ -211,7 +214,7 @@ function saveScores(Event){
 
     var user = {
         name: userName,
-        score: correct
+        score: userCorrectAnswer
     }
 
     console.log(user);
@@ -231,9 +234,9 @@ function saveScores(Event){
 }
 
 function showScores(){
-
-    questionSwitch.innerHTML = "userhighscores";
-    questionSwitch.setAttribute("class","userhighdcores");
+debugger;
+    questionSwitch.innerHTML = "High " +"Scores";
+    questionSwitch.setAttribute("class","userhighscores");
     questionSwitch.style.display = "block";
 
     quizQuestion.style.display = "none";
@@ -253,6 +256,13 @@ function showScores(){
     scoreTitle01.setAttribute("class","tableheading");
     scoreTitle01.appendChild(scoreTitle01Text01);
     row.appendChild(scoreTitle01);
+    
+    var scoreTitle02 = document.createElement("th");
+    var scoreTitle02Text02 = document.createTextNode("Score");
+    scoreTitle02.appendChild(scoreTitle02Text02);    
+    scoreTitle02.setAttribute("class","tableheading");
+    row.appendChild(scoreTitle02);
+
     scoreTableContent.appendChild(row);
 
 
@@ -273,8 +283,8 @@ function showScores(){
         row.appendChild(tdCell01);
 
         var tdCell02 = document.createElement("td");
-        var tdCell01Text02 = document.createTextNode(userNameScore);
-        tdCell01.appendChild(tdCell01Text02);
+        var tdCell02Text02 = document.createTextNode(userNameScore);
+        tdCell02.appendChild(tdCell02Text02);
         row.appendChild(tdCell02);
 
         scoreTableContent.appendChild(row);
@@ -286,7 +296,7 @@ function showScores(){
     }
     
     scoreTable.setAttribute("border", "2");
-    scoreTable.setAttribute("width", "100");
+    scoreTable.setAttribute("width", "100%");
 
     userHighScore.appendChild(scoreTable);
 
@@ -298,16 +308,34 @@ function showScores(){
 
     var goBackButton = document.createElement("button");
     goBackButton.setAttribute("class","btn");
-    goBackButton.textContent = "Start Over"
+    goBackButton.textContent = "Start Over";
     buttonDiv.appendChild(goBackButton);
 
     goBackButton.addEventListener("click",function(){
         window.location = "index.html";
-    })
+    });
 
 
+    var clearScoresButton = document.createElement("button");
+    clearScoresButton.setAttribute("class", "btn btnnn");
+    clearScoresButton.textContent = "Clear Scores";
+    buttonDiv.appendChild(clearScoresButton);
 
-
+    clearScoresButton.addEventListener("click", function(){
+        localStorage.clear();
+        var table = document.querySelector("table");
+        table.style.display = "none";
+    });
 }
+    
+    score.addEventListener("click", function(){
+
+        principalContent.style.display = "none";
+        score.style.display = "none";
+
+        previousScores = JSON.parse(localStorage.getItem("previousScores"));
+
+        showScores();
+    });
 
 startButton.addEventListener("click",startChallenge);
