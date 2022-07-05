@@ -51,7 +51,6 @@ var userQuestions = [
     }  
 ];
 
-var userWrongAnswer;
 var questionIndex = 0;
 var userCorrectAnswer = 0 
 var timeLeft = 75;
@@ -61,7 +60,7 @@ var previousScores;
 var questionAnswerCorrect;
 var selectionArray = [];
 var buttonArray = [];
-var questionAnswer;
+// var questionAnswer;
 totalQuestions = userQuestions.length;
 var timer = document.querySelector("#timer");
 var scoreLink = document.querySelector("scorelink");
@@ -235,7 +234,76 @@ function showScores(){
 
     questionSwitch.innerHTML = "userhighscores";
     questionSwitch.setAttribute("class","userhighdcores");
+    questionSwitch.style.display = "block";
 
+    quizQuestion.style.display = "none";
+    userScore.style.display = "none";
+
+
+    var scoreTable = document.createElement("table");
+    scoreTable.setAttribute("id","table");
+    scoreTable.style.textAlign = "center";
+
+    var scoreTableContent = document.createElement("tbody");
+    var row = document.createElement("tr");
+
+    var scoreTitle01 = document.createElement("th");
+    var scoreTitle01Text01 = document.createTextNode("Name");
+
+    scoreTitle01.setAttribute("class","tableheading");
+    scoreTitle01.appendChild(scoreTitle01Text01);
+    row.appendChild(scoreTitle01);
+    scoreTableContent.appendChild(row);
+
+
+    var userNameLenght = 0;
+    if(previousScores) {
+        userNameLenght = previousScores.length;
+    }
+
+    for (var i = 0; i < userNameLenght; i++) {
+        var row = document.createElement("tr");
+
+        var userName = previousScores[i].name;
+        var userNameScore = previousScores[i].score;
+
+        var tdCell01 = document.createElement("td");
+        var tdCell01Text01 = document.createTextNode(userName);
+        tdCell01.appendChild(tdCell01Text01);
+        row.appendChild(tdCell01);
+
+        var tdCell02 = document.createElement("td");
+        var tdCell01Text02 = document.createTextNode(userNameScore);
+        tdCell01.appendChild(tdCell01Text02);
+        row.appendChild(tdCell02);
+
+        scoreTableContent.appendChild(row);
+
+    }
+    
+    if(userNameLenght > 0) {
+        scoreTable.appendChild(scoreTableContent);
+    }
+    
+    scoreTable.setAttribute("border", "2");
+    scoreTable.setAttribute("width", "100");
+
+    userHighScore.appendChild(scoreTable);
+
+    var buttonDiv = document.createElement("div");
+    buttonDiv.style.textAlign = "center";
+    userHighScore.appendChild(buttonDiv);
+
+    score.style.display = "none";
+
+    var goBackButton = document.createElement("button");
+    goBackButton.setAttribute("class","btn");
+    goBackButton.textContent = "Start Over"
+    buttonDiv.appendChild(goBackButton);
+
+    goBackButton.addEventListener("click",function(){
+        window.location = "index.html";
+    })
 
 
 
