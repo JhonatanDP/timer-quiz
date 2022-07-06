@@ -6,11 +6,13 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <meta http-equiv="X-UA-Compatible" content="ie=edge" />
       <title>Timer Quiz</title>
+        <!-- link for the CSS style sheet -->
       <link rel="stylesheet" href="./assets/css/style.css" />
     </head> 
     <body>
     <header>   
-        <nav class="score-timer">
+        <!-- High Score and Timer container -->
+        <nav class="score-timer">  
                 <a class="score" id = "scorelink" >High Scores</a>
                 <span class="timeprop" id="timer"></span>
         </nav>
@@ -18,6 +20,7 @@
     <main>    
         <br>
         <br>
+        <!-- Main container Flexbox applied -->
         <section class="container">
             <div class="question-container"> 
                 <div class="in-content">
@@ -37,6 +40,7 @@
                                     <button type="submit" id="startquiz" class="btn">Start Quiz</button>
                                 </div>
                             </section>
+                            <!-- div for result -->
                             <div id = "quizquestion"></div>
                             <div id = "userscore"></div>
                             <div id = "userhighscores"> </div>                       

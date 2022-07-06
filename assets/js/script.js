@@ -1,3 +1,4 @@
+//Questions array
 var userQuestions = [
     {
         question: "Commonly used data types Do not include:",
@@ -62,9 +63,9 @@ var selectionArray = [];
 var buttonArray = [];
 // var questionAnswer;
 totalQuestions = userQuestions.length;
-var timer = document.querySelector("#timer");
-var scoreLink = document.querySelector("scorelink");
-var principalContent = document.querySelector("#principal-content");
+var timer = document.querySelector("#timer"); //Timer
+var scoreLink = document.querySelector("scorelink");//High Score
+var principalContent = document.querySelector("#principal-content"); //Main body
 var questionSwitch = document.getElementById("question-change");
 var quizQuestion = document.querySelector("#quizquestion");
 var userSelection = document.querySelector("#userselection");
@@ -73,7 +74,7 @@ var userHighScore = document.querySelector("#userhighscores");
 var score = document.getElementById("scorelink");
 var startButton = document.getElementById("startquiz");
 
-
+//Buttons for question answers
 for(var i = 0; i < 4; i++){
     var buttonDiv = document.createElement("div");
     var selectionButtons = document.createElement("button");
@@ -82,17 +83,17 @@ for(var i = 0; i < 4; i++){
     selectionArray.push(buttonDiv);
     buttonArray.push(selectionButtons);
 }
-
+//Div to show if selected answer is correct or wrong
 var rightWrong = document.createElement("p");
 rightWrong.setAttribute("class", "right-wrong");
 userSelection.appendChild(rightWrong);
 
-
+//Function to start the timer and the Quesitons
 function startChallenge(){
     startTimer();
     buildQuestion();
 }
-
+//Timer
 function startTimer(){
     
     var timeInterval = setInterval(function(){
@@ -112,6 +113,7 @@ function startTimer(){
 
     },1000);
 }
+//function to display question and hide page content.
 var buildQuestion = function(){
 
     questionSwitch.style.display = "none";
@@ -128,6 +130,7 @@ var buildQuestion = function(){
         questionSwitch.setAttribute("class","textleft;");
         questionSwitch.style.display="block";
 
+        //generating options
         for (var a = 0; a < 4; a++){
         var index = buttonArray[a].getAttribute("data-index");
         buttonArray[a].textContent = (+index+1) +". "+userQuestions[questionIndex].answers[index];
@@ -140,7 +143,7 @@ var buildQuestion = function(){
     quizQuestion.setAttribute("style","text-align:left");
     quizQuestion.style.display = "block";
 }
-
+//Event listening for Answers
 quizQuestion.addEventListener("click",function(event){
 
         var segment = event.target;
@@ -169,7 +172,7 @@ quizQuestion.addEventListener("click",function(event){
         buildQuestion();
 
 });
-
+//To show end of the quiz
 function showResult() {
     questionSwitch.innerHTML = "Challenge Completed!";
     questionSwitch.style.display= "block";
@@ -177,11 +180,12 @@ function showResult() {
     var show = document.createElement("p");
     show.textContent = "You score is : "+ userCorrectAnswer;
     userScore.appendChild(show);
-
+//form to store score
     var form = document.createElement("form");
     var label = document.createElement("label");
     label.textContent = "Enter you name : ";
 
+//input username
     var textInput = document.createElement("input");
     textInput.setAttribute("id","nameInput");
     textInput.setAttribute("class","textinput");
@@ -198,7 +202,7 @@ function showResult() {
 
     summitScore.addEventListener("click",saveScores);
 }
-
+//store score
 function saveScores(event){
 
     
@@ -232,7 +236,7 @@ function saveScores(event){
 
     showScores();
 }
-
+//function to show high score
 function showScores(){
 debugger;
     questionSwitch.innerHTML = "High " +"Scores";
@@ -305,7 +309,7 @@ debugger;
     userHighScore.appendChild(buttonDiv);
 
     score.style.display = "none";
-
+//go back button
     var goBackButton = document.createElement("button");
     goBackButton.setAttribute("class","btn");
     goBackButton.textContent = "Start Over";
@@ -315,7 +319,7 @@ debugger;
         window.location = "index.html";
     });
 
-
+//clear score button
     var clearScoresButton = document.createElement("button");
     clearScoresButton.setAttribute("class", "btn btnnn");
     clearScoresButton.textContent = "Clear Scores";
@@ -327,7 +331,7 @@ debugger;
         table.style.display = "none";
     });
 }
-    
+//high Score Event listening.
     score.addEventListener("click", function(){
 
         principalContent.style.display = "none";
@@ -337,5 +341,5 @@ debugger;
 
         showScores();
     });
-
+//start quiz button
 startButton.addEventListener("click",startChallenge);
